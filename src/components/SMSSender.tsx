@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, Settings, AlertCircle, Check } from 'lucide-react';
+import { Send, Settings, AlertCircle, Check, Info } from 'lucide-react';
 import { Contact, SMSConfig } from '../types';
 import { sendBulkSMS, validateSMSConfig } from '../utils/smsApi';
 
@@ -88,6 +88,17 @@ const SMSSender: React.FC<SMSSenderProps> = ({
           </button>
         </div>
 
+        {/* CORS Warning */}
+        <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-md">
+          <div className="flex items-start">
+            <Info className="h-4 w-4 text-amber-600 mr-2 mt-0.5" />
+            <div className="text-sm text-amber-800">
+              <p className="font-medium">Demo Mode Active</p>
+              <p>Due to browser security restrictions, this demo simulates SMS sending. For production use, deploy with a backend server.</p>
+            </div>
+          </div>
+        </div>
+
         {showConfig && (
           <div className="mb-6 p-4 border border-gray-200 rounded-lg bg-gray-50">
             <h3 className="text-lg font-medium text-gray-800 mb-4">SMS Configuration</h3>
@@ -154,7 +165,7 @@ const SMSSender: React.FC<SMSSenderProps> = ({
                   <AlertCircle className="h-4 w-4 text-yellow-600 mr-2 mt-0.5" />
                   <div className="text-sm text-yellow-800">
                     <p className="font-medium">Sandbox Mode</p>
-                    <p>SMS will be sent to test numbers only. No actual charges will apply.</p>
+                    <p>SMS sending is simulated for demonstration. In production, use a backend server to avoid CORS issues.</p>
                   </div>
                 </div>
               </div>
